@@ -32,7 +32,6 @@
                 {  
                      if(isset($_SESSION["username"])){
                            $userID = $user->getUserIDbyName($_SESSION["username"]);
-                           echo $userID;
                         $insert_order = "  
                         INSERT INTO order_origin(User_ID, Creation_Date, Order_Status)  
                         VALUES('".$userID."', '".date('Y-m-d')."', 'pending')  
