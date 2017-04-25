@@ -35,7 +35,7 @@ function login($name,$password){
 function getUserIDbyName($userName){
     $connect = mysqli_connect("localhost","root","","data_web") or die ("Coundn't connect");
     mysqli_set_charset($connect,"utf8");
-    $query = mysqli_query($connect,"SELECT User_ID FROM user WHERE UserName='$username'");
+    $query = mysqli_query($connect,"SELECT User_ID FROM user WHERE UserName='$userName'");
     $numrows = mysqli_num_rows($query);
 
             if ($numrows!=0){//check user exist or not

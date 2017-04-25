@@ -7,19 +7,27 @@
  ?>  
  <!DOCTYPE html>  
  <html>  
-      <head>  
-           <title>Order</title>  
-           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
-           <meta http-equiv="ContentType" content="text/html" charset="utf-8"/>
-      </head>  
+     <head>  
+         <title>Order</title>  
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">  
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+         <link href="https://fonts.googleapis.com/css?family=Lato:300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+         <script src="bs/vendor/bootstrap.js" type="text/javascript"></script>
+         <link href="bs/vendor/font-awesome.css" rel="stylesheet" type="text/css"/>
+         <script src="bs/vendor/jquery.easing.min.js" type="text/javascript"></script>
+         <link href="bs/1.css" rel="stylesheet" type="text/css"/>
+         <script src="bs/1.js" type="text/javascript"></script>
+         <link href="bs/jquery-ui.css" rel="stylesheet" type="text/css"/>
+         <script src="bs/jquery-ui.js" type="text/javascript"></script>
+     </head>  
       <body>  
            <br />  
            <div class="container" style="width:800px;">  
                 <?php  
-                $user = new UserDAO();
-              
+                $user = new UserDAO;
+                
                 if(isset($_POST["place_order"]))  
                 {  
                      if(isset($_SESSION["username"])){
@@ -27,7 +35,7 @@
                            echo $userID;
                         $insert_order = "  
                         INSERT INTO order_origin(User_ID, Creation_Date, Order_Status)  
-                        VALUES('.$userID.', '".date('Y-m-d')."', 'pending')  
+                        VALUES('".$userID."', '".date('Y-m-d')."', 'pending')  
                         ";  
                         $order_id = "";  
                         if(mysqli_query($connect, $insert_order))  
@@ -47,7 +55,7 @@
                         {  
                              unset($_SESSION["shopping_cart"]);  
                              echo '<script>alert("You have successfully place an order...Thank you")</script>';  
-                             echo '<script>window.location.href="cart.php"</script>';  
+                             echo '<script>window.location.href="order.php"</script>';  
                         }  
                      }else{
                          echo '<script>alert("You have to login!")</script>';  
@@ -71,10 +79,10 @@
                      while($row = mysqli_fetch_array($result))  
                      {  
                           $customer_details = '  
-                          <label>'.$row["UserName"].'</label>  
-                          <p>'.$row["Address"].'</p>  
-                          <p>'.$row["Phone"].'</p>  
-                          <p>'.$row["Email"].'</p>  
+                          <label>Name: '.$row["UserName"].'</label>  
+                          <p>Address: '.$row["Address"].'</p>  
+                          <p>Phone: '.$row["Phone"].'</p>  
+                          <p>Email: '.$row["Email"].'</p>  
                           ';  
                           $order_details .= "  
                                <tr>  
@@ -121,6 +129,8 @@
                      ';  
                 }  
                 ?>  
+               <a href="index.php">Back To Home Page</a>
            </div>  
+           
       </body>  
  </html> 
