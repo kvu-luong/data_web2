@@ -1,0 +1,140 @@
+*{margin:0;padding:0; }
+
+button.btn.btn-link.bt {
+    padding-top: 15px;
+    text-decoration: none;
+}
+body{
+    font-family: 'Lato', sans-serif;
+}
+.loginForm {
+    padding-top: 250px;
+}
+.topbutton {
+    position: fixed;
+    bottom: 39px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    height: 48px;
+    width: 45px;
+    line-height: 50px;
+    padding-left: 13px;
+    color: white;
+    font-size: 20px;
+    transition: all 1s ease;
+    opacity: 0;
+}
+
+img.img-responsive {
+    transition: all 1s ease;
+}
+
+
+.col-md-6.anh {
+    overflow: hidden;
+}
+
+.col-md-6.anh img:hover {
+    transform: scale(1,2);
+}
+
+ul.nav.nav-tabs {
+    margin-top: 12px;
+    font-size: 18px;
+}
+
+.che {
+    position: absolute;
+    background: rgba(217, 237, 247, 0.78);
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    transition: height 500s ease 0s;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+#slider {
+    margin: 9px;
+}
+
+hr.line {
+    margin: 7px 15px;
+    width: 98%;
+}
+
+.contentTop {
+    margin-top: 9px;
+}
+
+.separeateMenu {
+    margin: 10px 0px;
+}
+
+.thumbnail > img, .thumbnail a > img {
+    height: 200px;
+}
+
+.thumbnail {
+    height: 378px;
+    width: 212px;
+    margin-top: 15px;
+}
+
+.thumbnail.picture {
+    position: relative;
+}
+
+.thumbnail.picture:hover .che {
+    transform: translateY(0px);
+    transition: all 0.4s;
+}
+
+.thumbnail.picture:hover .che {
+    opacity: 1;
+}
+
+.thumbnail.picture:hover .che {
+    opacity: 1;
+}
+
+.navbar-default {
+    transition: all 0.4s;
+}
+
+
+.sidebar2 li {
+    list-style-type: none;
+    text-align: center;
+}
+
+.sidebar li{
+    list-style-type: none;
+}
+
+.sidebar a {text-transform: uppercase;}
+
+.carousel-inner >.item > img {
+    width: 77%;
+    position: relative;
+    left: 138px;
+}
+
+
+.menutop {
+    height: 48px;
+    line-height: 48px;
+    font-size: 25px;
+    background: rgba(128, 128, 128, 0.55);
+    color: white;
+}
+.footer{
+    background: rgba(0, 0, 0, 0.38);
+    color: white;
+    text-transform: uppercase;
+}
+ 
+
+ 
