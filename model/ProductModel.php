@@ -6,17 +6,15 @@
         var $detail;
         var $image;
         var $price;
-        var $quantiy;
         
    
-        function __construct($productID, $productName, $categoryID, $detail, $image, $price, $quantiy) {
+        function __construct($productID, $productName, $categoryID, $detail, $image, $price) {
             $this->productID = $productID;
             $this->productName = $productName;
             $this->categoryID = $categoryID;
             $this->detail = $detail;
             $this->image = $image;
             $this->price = $price;
-            $this->quantiy = $quantiy;
         }
 
         function getProductID() {
@@ -43,10 +41,6 @@
             return $this->price;
         }
 
-        function getQuantiy() {
-            return $this->quantiy;
-        }
-
         function setProductID($productID) {
             $this->productID = $productID;
         }
@@ -69,10 +63,6 @@
 
         function setPrice($price) {
             $this->price = $price;
-        }
-
-        function setQuantiy($quantiy) {
-            $this->quantiy = $quantiy;
         }
 
 

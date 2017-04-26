@@ -16,10 +16,10 @@ class ProductDAO{
                     $dbdetail = $row['Detail'];
                     $dbimage = $row['Image'];
                     $dbprice = $row['Price'];
-                    $dbquantity = $row['Quantiy'];
+                    
                     
                     $product = new ProductModel($dbproduct_id, $dbproduct_name, $dbcategory_id,
-                            $dbdetail, $dbimage, $dbprice, $dbquantity);
+                            $dbdetail, $dbimage, $dbprice);
                      array_push($arr,$product);
                 }
                 return $arr;      
