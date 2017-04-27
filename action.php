@@ -100,7 +100,7 @@
                 </tr>  
                 <tr>  
                      <td colspan="5" align="center">  
-                          <form method="post" action="cart.php">  
+                          <form method="post" action="order.php">  
                                <input type="submit" name="place_order" class="btn btn-warning" value="Place Order" />  
                           </form>  
                      </td>  

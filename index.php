@@ -1,8 +1,10 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+    <head>
         <title> Index page </title>
         <meta charset="utf-8">
 
@@ -18,7 +20,7 @@ session_start();
         <link href="bs/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="bs/jquery-ui.js" type="text/javascript"></script>
     </head>
-    <body >
+    <body>
         <div class="menutop">
             <div class="container">
                 <i class="fa fa-car">FREE DELIVERY FOR BILL OVER 500k</i>
@@ -70,48 +72,6 @@ session_start();
                 </div>
             </nav>
         </div><!-- end menu -->
-
-        <div class="modal fade" id="modal-id">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">REGISTER FORM</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="" method="POST" role="form">
-
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="" placeholder="Username" required name="username">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="" placeholder="Password" required name="password">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="" placeholder="Confirm Password" required name="confirmpass">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="" placeholder="Your email" required name="email">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="phone" class="form-control" id="" placeholder="Your Phone Number" required name="phone">
-                            </div>
-
-
-
-                            <button type="submit" class="btn btn-primary">REGISTER</button>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div> <!-- end modal register -->
-
-
         <div class="slideTop">
             <div class="container">
                 <div id="carousel-id" class="carousel slide" data-ride="carousel">
@@ -228,40 +188,17 @@ session_start();
                                                     echo '0';
                                                 }
                                                 ?></span></a></li>
-                                   
+
                                 </ul>
 
                                 <div class="tab-content">
                                     <div id="product" class="tab-pane fade in active">
-                                        <!--start content of product -->
-                                        <?php
-                                        $productINFO = $product->getAllProduct();
-                                        foreach ($productINFO as $product) {
-                                            ?>
-                                            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-
-                                                <div class="thumbnail picture">
-                                                    <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($product->image) . '"/>'; ?>
-                                                    <div class="caption">
-                                                        <h4><?php echo $product->productName; ?></h4>
-                                                        <h4><?php
-                                                            echo '$ ' . $product->price;
-                                                            $product->productID;
-                                                            ?> </h4>
-                                                        <input type="text" name="quantity" id="quantity<?php echo $product->productID; ?>" class="form-control" value="1" />  
-                                                        <input type="hidden" name="hidden_name" id="name<?php echo $product->productID; ?>" value="<?php echo $product->productName; ?>" />  
-                                                        <input type="hidden" name="hidden_price" id="price<?php echo $product->productID; ?>" value="<?php echo $product->price; ?>" />  
-                                                        <input type="button" name="add_to_cart" id="<?php echo $product->productID; ?>" style="margin-top:5px;" class="btn btn-warning form-control add_to_cart" value="Add to Cart" />  
-                                                    </div>
-                                                    <!--  <div class="che">
-                                                          </div>-->
-                                                </div> 		       
+                                        <!--start content of product --> 
+                                        <div class="row">
+                                            <div  id="pagination_data">  
                                             </div>
-                                            <?php
-                                        }
-                                        ?>
-                                        <!-- end content of product -->
-                                    </div> <!-- end home tab -->
+                                        </div>                                        
+                                    </div> <!-- end product tab -->
                                     <div id="cart" class="tab-pane fade">
                                         <div class="table-responsive" id="order_table">  
                                             <table class="table table-bordered">  
@@ -294,10 +231,11 @@ session_start();
                                                         <td></td>  
                                                     </tr>  
                                                     <tr>  
-                                                        <td colspan="5" align="center">  
-                                                            <form method="post" action="order.php">  
+                                                        <td colspan="5" align="center"> 
+                                                            <form action="order.php" method="post">  
                                                                 <input type="submit" name="place_order" class="btn btn-warning" value="Place Order" />  
-                                                            </form>  
+                                                            </form> 
+
                                                         </td>  
                                                     </tr>  
                                                     <?php
@@ -306,21 +244,11 @@ session_start();
                                             </table>  
                                         </div>  
                                     </div> <!-- end cart tab -->
-                                   
+
                                 </div><!-- end nav-tabs -->
                             </div>
                         </div> <!-- end popular -->
                     </div>
-                    <ul class="pagination">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul>
-
                     <div class="topbutton">
                         <div class="fa fa-arrow-up"></div>
                     </div>
@@ -335,8 +263,27 @@ session_start();
     </body>
 </html>
 <script>
-    $(document).ready(function (data) {
-        $('.add_to_cart').click(function () {
+    $(document).ready(function () {
+        load_data();
+        function load_data(page)
+        {
+            $.ajax({
+                url: "pagination.php",
+                method: "POST",
+                data: {page: page},
+                success: function (data) {
+                    $('#pagination_data').html(data);
+                }
+            });
+        }
+        $(document).on('click', '.pagination_link', function () {
+            console.log("luong khanh vu");
+            var page = $(this).attr("id");
+            load_data(page);
+        });
+        
+        $(document).on('click','.add_to_cart',function(){//on (click when that attribute from return data not in this page
+           console.log("handsome in the future") ;
             var product_id = $(this).attr("id");
             var product_name = $('#name' + product_id).val();
             var product_price = $('#price' + product_id).val();
@@ -364,10 +311,10 @@ session_start();
                 });
             } else
             {
-                alert("Please Enter Number of Quantity")
+                alert("Please Enter Number of Quantity");
             }
-        });
-        $(document).on('click', '.delete', function () {
+        });//end add cart
+         $(document).on('click', '.delete', function () {
             var product_id = $(this).attr("id");
             var action = "remove";
             if (confirm("Are you sure you want to remove this product?"))
@@ -391,7 +338,7 @@ session_start();
             var product_id = $(this).data("product_id");
             var quantity = $(this).val();
             var action = "quantity_change";
-            if (quantity != '')
+            if (quantity !== '')
             {
                 $.ajax({
                     url: "action.php",
@@ -403,6 +350,8 @@ session_start();
                     }
                 });
             }
-        });
-    });
-</script>
+        }); //end remove and quantity
+      
+            
+    });//end document ready
+</script>  
