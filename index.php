@@ -56,7 +56,7 @@ include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
                             <?php
                             if (isset($_SESSION['username'])) {
                                 ?>  
-                                <li><a href="#"><span class="fa fa-user"></span>WELCOME - <?php echo $_SESSION['username']; ?></a></li>
+                                <li><a data-toggle="modal" href="#"><span class="fa fa-user"></span>WELCOME - <?php echo $_SESSION['username']; ?></a></li>
                                 <li>
                                     <form method="post" action="UserServlet.php">
                                         <button class="btn btn-link bt" name="method" value="logout"><span class="fa fa-sign-out"></span>LOGOUT</button>
@@ -247,7 +247,7 @@ include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
                                     </div> <!-- end cart tab -->
 
                                 </div><!-- end nav-tabs -->
-                            </div>
+                            </div> <!-- end 12 col -->
                         </div> <!-- end popular -->
                     </div>
                     <div class="topbutton">
