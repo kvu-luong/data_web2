@@ -1,6 +1,7 @@
 <?php
-
-
+session_start();
+unset($_SESSION["product"]);
+unset($_SESSION["errorproduct"]);
         $connect = mysqli_connect("localhost", "root", "", "data_web");
         $record_per_page = 8;
         $page = '';
@@ -12,14 +13,12 @@
         }
         $start_from = ($page - 1) * $record_per_page;
         $query = "SELECT * FROM product ORDER BY Product_ID DESC LIMIT $start_from, $record_per_page";
-
         $result = mysqli_query($connect, $query);
        
         while ($row = mysqli_fetch_array($result)) {
     $output .= '  
                
                  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-
                                                 <div class="thumbnail picture">
                                                    <img src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" height="200" width="100" "/>
                                                     <div class="caption">
@@ -51,5 +50,4 @@
         $output .='</div>';
         echo $output;
     
-
-?>  
+?>

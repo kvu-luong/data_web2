@@ -42,7 +42,7 @@ session_start();
                       unset($_SESSION["error"]);//when we reset pape delete particular session.
                       ?>
                   </div>
-                  <div cl ass="form-group">
+                  <div class="form-group">
                    <input type="hidden" name="method" value="login"/>
                    <button type="submit" class="btn btn-success">Login</button>
                   </div>

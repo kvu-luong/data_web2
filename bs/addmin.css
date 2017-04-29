@@ -1,0 +1,231 @@
+
+*{margin:0;padding:0; }
+
+.calendar-container {
+    background-color: gray;
+    width: 227px;
+    padding: 10px;
+    box-shadow: 0px 1px 6px green;
+}
+
+div#wrapper {
+    margin-top: 50px;
+}
+
+.visit.online {
+    background-color: red;
+}
+
+.visit.view {
+    background-color: yellow;
+}
+
+.visit.user {
+    background-color: orange;
+}
+
+.visit {
+    background-color: #d9edf7;
+    height: 123px;
+    font-size: 21px;
+    padding: 13px;
+}
+
+.visit i {
+    font-size: 28px;
+}
+
+ul.hidee {
+    padding-left: 73px;
+    background-color: white;
+    display: none;
+}
+
+ul.hidee li {
+    border-bottom: 1px solid gray;
+}
+
+ul.hidee li:hover {
+    padding-left: 13px;
+    transition: all 0.4s;
+}
+
+ul.hidee li a {
+    text-decoration: none;
+}
+
+ul.hidee li:hover {
+    background-color: rgba(0, 0, 0, 0.33);
+}
+
+ul.search {padding-left: 79px;}
+
+.content-wrapper {
+    transition: all ease 0.4s;
+}
+
+li.fa.fa-window-close {
+    height: 10px;
+    z-index: 2;
+    width: 40px;
+    background: #d9edf7;
+    font-size: 10px;
+    float: right;
+}
+
+.cachdeu {
+    padding-left: 21px;
+}
+
+.noidung h1 {
+    text-transform: uppercase;
+    margin: 0px;
+}
+
+.box-panel {padding-top: 15px;background-color: white;}
+
+.box-to {
+    background-color: blue;
+    color: white;
+    font-size: 31px;
+    padding: 12px;
+    text-transform: uppercase;
+}
+
+.box {
+    border-bottom: 1px solid black;
+    margin-right: 0px;
+}
+
+.ba {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.chin {padding: 0px;}
+
+.siderbar.out {
+    display: none;
+}
+
+
+nav.navbar.navbar-inverse {
+    margin-bottom: 0px;
+    background-color: rgb(75, 49, 143);
+    border: none;
+    border-radius: 0%;
+}
+
+a.navbar-brand b {
+    font-size: 35px;
+    letter-spacing: 8px;
+    color: white;
+    padding-left: 14px;
+}
+
+a.navbar-brand {
+    font-size: 20px;
+}
+
+a#menu-toggle {
+    background-color: #4b318f;
+    border: 1px solid #555;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+}
+
+.nav > li > a:hover {
+    color: black;
+    padding-left: 40px;
+}
+.nav li{
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+li.show:hover .hidee {
+    display: block;
+    transition: all ease 0.8s;
+}
+
+.nav > li > a {
+    color: white;
+    text-decoration: none;
+    transition: all ease 0.4s;
+    border-bottom:1px solid gray;
+    padding: 29px;
+    line-height: 10px;
+    width: 250px;
+}
+.nav > li > a:active{
+    color: black;
+    padding-left: 40px;
+}
+
+ 
+.siderbar{
+    background: #171717;
+    height:100%;
+    width:0;
+    z-index: 1;
+    overflow-y:hidden;
+    opacity:0.9;
+    position: absolute;
+    transition: all ease 0.4s;
+}
+.noidung{
+    background: rgba(128, 128, 128, 0.3);
+    width: 100%;
+    position: absolute;
+
+}
+.nav ul> li{
+    list-style-type: none;
+}
+.dropdown{
+    position: relative;
+}
+.dropdown-content{
+    display:none;
+    position: absolute;
+}
+.dropdown:hover .dropdown.content{
+    display:block;
+}
+
+#wrapper.menuDisplayed .siderbar{
+    width: 250px;
+}
+#wrapper.menuDisplayed .content-wrapper{
+    padding-left: 250px;
+    transition: all ease 0.4s;
+}
+
+
+#calendar-container{
+    padding: 10px;
+    width: 210px;
+    height: 240px;
+    text-align: center;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: Arial;
+    background-image: linear-gradient(#fff, #d3d3d3);
+}
+
+#calendar-container>div{
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+#calendar-month-year{
+    margin: 5px;
+}
+
+#calendar-dates>table>tr>td{
+    padding: 5px;
+    border: 1px solid green;
+}

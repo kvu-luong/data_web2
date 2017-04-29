@@ -24,6 +24,33 @@
         case "logout":
             session_destroy();
             $url = "Location: index.php";
+            break;
+        case "register":
+            $username = $_POST["UserName"];
+            $password = $_POST["Password"];
+            $confim = $_POST["Confirm"];
+            $email = $_POST["Email"];
+            $phone = $_POST["Phone"];
+            $address = $_POST["Address"];
+            $bankid = $_POST["BankID"];
+            echo $username;
+            if($password != $confim){
+                $_SESSION['errorconfirm'] = "Your confirm password was wrong!";
+                $url="Location:registerPage.php";
+            }else{
+            $register = new UserDAO;
+            $user = $register->register($username, md5($password),$email, $phone, $address, $bankid);
+            if($user== true){
+                 $_SESSION['username'] = $name;
+                 $url="Location:index.php";
+            }
+            else{
+                 $_SESSION['erroruser'] = "Your username already exist in data!";
+                 $url="Location:registerPage.php";
+            }
+            }
+            
+            
     }
     
         

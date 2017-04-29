@@ -196,8 +196,33 @@ include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
                                 <div class="tab-content">
                                     <div id="product" class="tab-pane fade in active">
                                         <!--start content of product --> 
-
-                                            <div  id="pagination_data"> </div>
+                                        <?php
+                                        if(isset($_SESSION["check"])&&$_SESSION["check"]== 0){
+                                            ?>
+                                        <p>Don't have this product in our data!</p>
+                                            <?php
+                                        }else{
+                                            
+                                            
+                                            foreach(unserialize($_SESSION['listP']) as $listP ){
+                                                ?>
+                                          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                                <div class="thumbnail picture">
+                                                   <img src="data:image/jpeg;base64,<?php echo base64_encode($listP->image); ?>" height="200" width="100" "/>
+                                                    <div class="caption">
+                                                        <h4><?php echo $listP->productName; ?></h4>
+                                                        <h4>$<?php echo $listP->price; ?> </h4>
+                                                        <input type="text" name="quantity" id="quantity<?php echo $listP->productID; ?>" class="form-control" value="1" />  
+                                                        <input type="hidden" name="hidden_name" id="name<?php echo $listP->productID; ?>" value="<?php echo $listP->productName; ?>" />  
+                                                        <input type="hidden" name="hidden_price" id="price<?php echo $listP->productID; ?>" value="<?php echo $listP->price; ?>" />  
+                                                        <input type="button" name="add_to_cart" id="<?php echo $listP->productID; ?>" style="margin-top:5px;" class="btn btn-warning form-control add_to_cart" value="Add to Cart" />  
+                                                    </div>
+                                                </div> 		       
+                 </div>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
                                       
                                     </div> <!-- end product tab -->
                                     <div id="cart" class="tab-pane fade">
@@ -285,11 +310,12 @@ include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
         });
         
              $(document).on('click', '.add_to_cart', function () {//on (click when that attribute from return data not in this page
-    
+                 console.log("add cart error");
             var product_id = $(this).attr("id");
             var product_name = $('#name' + product_id).val();
             var product_price = $('#price' + product_id).val();
             var product_quantity = $('#quantity' + product_id).val();
+            
             var action = "add";
             if (product_quantity > 0)
             {

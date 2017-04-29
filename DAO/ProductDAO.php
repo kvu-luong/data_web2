@@ -2,6 +2,28 @@
 include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
 include_once 'C:\xampp\htdocs\store\model\CategoryModel.php';
 class ProductDAO{
+        function searchProductByName($search) {
+        $connect = new mysqli('localhost', 'root', '', 'data_web');
+        mysqli_set_charset($connect, "utf8");
+
+        $resultset = $connect->query("SELECT * FROM product where Product_Name like '%$search%'");
+
+        $array = array();
+
+        while ($row = mysqli_fetch_array($resultset)) {
+            $Product_ID = $row['Product_ID'];
+            $Product_Name = $row['Product_Name'];
+            $Detail = $row['Detail'];
+            $Image = $row['Image'];
+            $Price = $row['Price'];
+            $CategoryID = $row['Category_ID'];
+
+            $product = new ProductModel($Product_ID, $Product_Name,$CategoryID,$Detail, $Image, $Price);
+            array_push($array, $product);
+        }
+        return $array;
+    }
+
     function getAllProduct(){
         $connect = mysqli_connect("localhost","root","","data_web") or die ("Coundn't connect");
         mysqli_set_charset($connect,"utf8");
