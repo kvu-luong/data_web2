@@ -55,8 +55,12 @@ include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
                         <ul class="nav navbar-nav navbar-right">
                             <?php
                             if (isset($_SESSION['username'])) {
+                                if(isset($_SESSION['usertype']) and ($_SESSION['usertype'] != 'admin')){
                                 ?>  
-                                <li><a data-toggle="modal" href="#"><span class="fa fa-user"></span>WELCOME - <?php echo $_SESSION['username']; ?></a></li>
+                                <li><a data-toggle="modal" href="#profile"><span class="fa fa-user"></span>WELCOME - <?php echo $_SESSION['username']; ?></a></li>
+                                <?php }else{
+                                    header("Location:adminPage.php");
+                                } ?>
                                 <li>
                                     <form method="post" action="UserServlet.php">
                                         <button class="btn btn-link bt" name="method" value="logout"><span class="fa fa-sign-out"></span>LOGOUT</button>
@@ -173,7 +177,7 @@ include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
                     </div>
                     <div class="row comment">
                         <h3>COMMENT</h3>
-                        <!-- not yet -->
+                        <div id="data_coment"></div>
                     </div>
                 </div>
                 <div class="col-md-9"><!-- content -->
@@ -256,6 +260,23 @@ include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
                 </div><!-- end 9cot -->
             </div>
         </div><!-- end noidung -->
+        <!--modal profile -->
+        <div class="modal fade" id="profile">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Profile</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="profile_data"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end modal profile -->
         <div class="footer">
             <div class="container text-center">
                 <h4>Create by BEAST TEAM &copy Freelancer at VietNam</h4>
@@ -357,3 +378,101 @@ include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
 
     });//end document ready
 </script>  
+<script>
+    //this jquery for user
+    $(document).ready(function(){
+      function fetch_data()  
+      {  
+           $.ajax({  
+                url:"selectprofile.php",  
+                method:"POST",  
+                success:function(data){  
+                     $('#profile_data').html(data);  
+                }  
+           });  
+      } 
+      fetch_data();
+           function edit_data_user(id, text, column_name)  
+      {  
+           $.ajax({  
+                url:"edituser.php",  
+                method:"POST",  
+                data:{id:id, text:text, column_name:column_name},  
+                dataType:"text",  
+                success:function(data){  
+                     alert(data);  
+                }  
+           });  
+      };
+         $(document).on('blur', '.username', function(){  
+           var id = $(this).data("id1");  
+           var username = $(this).text();  
+           edit_data_user(id, username, "User Name");  
+      });
+         $(document).on('blur', '.password', function(){  
+           var id = $(this).data("id2");  
+           var password = $(this).text();  
+           edit_data_user(id,password, "Password");  
+      });
+         $(document).on('blur', '.email', function(){  
+           var id = $(this).data("id3");  
+           var email = $(this).text();  
+            edit_data_user(id,email, "Email");  
+      });
+         $(document).on('blur', '.phone', function(){  
+           var id = $(this).data("id4");  
+           var phone = $(this).text();  
+            edit_data_user(id,phone, "Phone");  
+      });
+         $(document).on('blur', '.address', function(){  
+           var id = $(this).data("id5");  
+           var address = $(this).text();  
+            edit_data_user(id,address, "Address");  
+      }); 
+         $(document).on('blur', '.bankid', function(){  
+           var id = $(this).data("id6");  
+           var bankid = $(this).text();  
+            edit_data_user(id,bankid, "Bank ID");  
+      }); 
+    });
+</script>
+<script>
+    //for comment
+     $(document).ready(function(){
+      function fetch_data()  
+      {  
+           $.ajax({  
+                url:"selectcoment.php",  
+                method:"POST",  
+                success:function(data){  
+                     $('#data_coment').html(data);  
+                }  
+           });  
+      } 
+      fetch_data();
+        $(document).on('click', '#btn_add_coment', function () {
+            var coment = $('#coment').text();  //text get from td in slect.php
+           
+            if (coment == '')
+            {
+                alert("You should type somthing!");
+                return false;
+            }if (username == '')
+            {
+                alert("Please login before comment");
+                return false;
+            }
+            $.ajax({
+                url: "insertcoment.php",
+                method: "POST",
+                data:{comment:coment, username:username},  
+                dataType: "text",
+                success: function (data)
+                {
+                    alert(data);
+                    fetch_data();
+                }
+            });
+        });
+    });
+</script>

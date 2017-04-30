@@ -13,9 +13,17 @@
             $password = $_POST["password"];
             $login = new UserDAO;
             $user = $login->login($name, $password);
+            $usertype= $user->userType;
+            echo $usertype;
             if($user != NULL){
                 $_SESSION['username'] = $name;
+                $_SESSION['usertype'] = $usertype;
+        echo $_SESSION['usertype'];
+                if($usertype=='admin'){
+                    $url ="Location:adminPage.php";
+                }else{
                 $url="Location:index.php";
+                }
             } else {
                 $_SESSION['error'] = "error";
                 $url="Location: loginPage.php";
