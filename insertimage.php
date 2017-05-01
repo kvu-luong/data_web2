@@ -32,7 +32,7 @@
       </head>  
       <body>  
            <br /><br /> 
-           
+           <div class="coveraddproduct">
            <div class="container" >  
                <div class="row">
                    <div class="col-md-6 col-md-push-3">
@@ -59,7 +59,7 @@
                         </tr>
                         <tr>
                             <th>Price</th>
-                            <td> <input type="number" id="price"  required=""/></td>
+                            <td> <input type="number" name="price"  required=""/></td>
                         </tr>
                         <tr>
                             <th></th>
@@ -70,6 +70,7 @@
                    </div> <!-- end col -->
                </div> <!-- end row -->
            </div>  
+           </div>
       </body>  
  </html>  
  <script>  

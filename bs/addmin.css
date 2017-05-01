@@ -1,6 +1,33 @@
 
 *{margin:0;padding:0; }
 
+.coveraddproduct {
+    background-color: gainsboro;
+    margin-top: -38px;
+    padding-bottom: 300px;
+}
+
+.coveraddproduct {}
+.box-to {
+    background-color: blue;
+    color: white;
+    font-size: 31px;
+    padding: 12px;
+    text-transform: uppercase;
+}
+button, input, select, textarea {
+    width: 100%;
+    resize: none;
+    padding: 11px;
+    margin-top: 14px;
+}
+.cover {
+    background-color: gainsboro;
+    margin-top: -37px;
+    padding-bottom: 250px;
+}
+
+
 h3 {
     margin-left: -61px;
 }

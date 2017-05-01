@@ -19,19 +19,21 @@ session_start();
         <script src="bs/jquery-ui.js" type="text/javascript"></script>
 </head>
 <body >
+    <div class="cover">
    <div class="container text-center">
        <div class="row">
             <div class="col-md-4 col-md-push-4">
                 <div id="box">
+                    <h3 class="to">Login Form</h3>
                  <br />
                  <form method="post" action="UserServlet.php">
                   <div class="form-group">
                    <label>Username</label>
-                   <input type="text" name="username" id="username" class="form-control" required />
+                   <input type="text" name="username" id="username" class="form-control" required placeholder="Username" />
                   </div>
                   <div class="form-group">
                    <label>Password</label>
-                   <input type="password" name="password" id="password" class="form-control" required />
+                   <input type="password" name="password" id="password" class="form-control" required placeholder="Password"/>
                   </div>
                   <div>
                       <?php
@@ -53,5 +55,6 @@ session_start();
            </div>
         </div> 
    </div><!-- end loginForm-->
+    </div>
 </body>
 </html>

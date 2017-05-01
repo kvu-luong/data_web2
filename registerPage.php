@@ -20,9 +20,10 @@
         <script src="bs/jquery-ui.js" type="text/javascript"></script>
     </head>
     <body>
+        <div class="cover">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-4 col-md-push-4" >
+                <div class="col-md-4 col-md-push-4 regis" >
                     <h4>Welcome to Our WebSite</h4>
                     <form action="UserServlet.php" method="POST">
                         <div class="form-group">
@@ -71,10 +72,11 @@
                         </div>                   
 
                     <input type="hidden" name="method" value="register"/>
-                   <button type="submit" class="btn btn-success">REGISTER5</button>
+                   <button type="submit" class="btn btn-success">REGISTER</button>
                     </form>
                 </div> <!-- end col-md-12 -->
             </div> <!-- end row -->
         </div> <!-- end container -->
+        </div>
     </body>
 </html>
