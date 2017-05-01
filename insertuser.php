@@ -2,7 +2,7 @@
  $connect = mysqli_connect("localhost", "root", "", "data_web"); 
     mysqli_set_charset($connect, "utf8");
 $username = mysqli_escape_string($connect, $_POST["username"]) ;
-$password = mysqli_escape_string($connect, $_POST["password"]) ;
+$password = md5(mysqli_escape_string($connect, $_POST["password"])) ;
 $usertype = mysqli_escape_string($connect, $_POST["usertype"]) ;
 $email = mysqli_escape_string($connect, $_POST["email"]) ;
 $phone = mysqli_escape_string($connect, $_POST["phone"]) ;

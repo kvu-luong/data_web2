@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0) {
                 <tr>  
                      
                      <td class="username" data-id1="' . $row["User_ID"] . '" contenteditable>' . $row["UserName"] . '</td>  
-                     <td class="password" data-id2="' .$row["User_ID"]. '" contenteditable>' . $row["Password"] . '</td> 
+                     <td><input type="password" class="password" data-id2="' .$row["User_ID"]. '" contenteditable value="'.$row["Password"].'"/></td> 
                     
                      <td class="email" data-id3="' . $row["User_ID"] . '" contenteditable>' . $row["Email"] . '</td>  
                      <td class="phone" data-id4="' .$row["User_ID"] . '" contenteditable>' . $row["Phone"] . '</td>  

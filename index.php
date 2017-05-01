@@ -379,7 +379,7 @@ include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
     });//end document ready
 </script>  
 <script>
-    //this jquery for user
+    //this jquery for user profile
     $(document).ready(function(){
       function fetch_data()  
       {  
@@ -411,8 +411,10 @@ include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
       });
          $(document).on('blur', '.password', function(){  
            var id = $(this).data("id2");  
-           var password = $(this).text();  
-           edit_data_user(id,password, "Password");  
+           var password = $(this).val();
+           
+          
+           edit_data_user(id,password+"vudeptrai", "Password");  
       });
          $(document).on('blur', '.email', function(){  
            var id = $(this).data("id3");  
