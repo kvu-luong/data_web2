@@ -1,6 +1,17 @@
 
 *{margin:0;padding:0; }
 
+h3 {
+    margin-left: -61px;
+}
+
+button, input, select, textarea {
+    width: 100%;
+    resize: none;
+    padding: 11px;
+    margin-top: 14px;
+}
+
 .navbar-inverse .btn-link {
     height: 87px;
 }
@@ -148,7 +159,7 @@ a.navbar-brand {
 
 a#menu-toggle {
     background-color: #4b318f;
-    border: 1px solid #555;
+    border: none;
 }
 
 body{
@@ -184,6 +195,7 @@ li.show:hover .hidee {
 .navbar-inverse .navbar-nav>li>a {
     font-size: 30px;
     color: white;
+    border: none;
     width: 433px;
 }
 

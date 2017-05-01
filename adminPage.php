@@ -40,7 +40,11 @@ session_start();
                                         <button class="btn btn-link bt" name="method" value="logout"><span class="fa fa-sign-out"></span>LOGOUT</button>
                                     </form>
                         </li>
-                        <?php }?>
+                        <?php }
+                        else{
+                         header("Location:loginPage.php");
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -106,50 +110,7 @@ session_start();
             });
         }
         fetch_data();
-        $(document).on('click', '#btn_add', function () {
-            var productname = $('#productname').text();  //text get from td in slect.php
-            var categoryid = $('#category').text();
-            // var image = $('#image').text();  
-            var detail = $('#detail').text();
-            var price = $('#price').text();
 
-            if (productname == '')
-            {
-                alert("Enter Product Name");
-                return false;
-            }
-            if (categoryid == '')
-            {
-                alert("Enter Category Id");
-                return false;
-            }
-//           if(image == '')  
-//           {  
-//                alert("Please choose image");  
-//                return false;  
-//           }  
-            if (detail == '')
-            {
-                alert("Enter Detail for Product");
-                return false;
-            }
-            if (price == '')
-            {
-                alert("Enter Price for Product");
-                return false;
-            }
-            $.ajax({
-                url: "insert.php",
-                method: "POST",
-                data: {productname: productname, categoryid: categoryid, detail: detail, price: price},
-                dataType: "text",
-                success: function (data)
-                {
-                    alert(data);
-                    fetch_data();
-                }
-            });
-        });
         function edit_data(id, text, column_name)
         {
             $.ajax({

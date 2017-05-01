@@ -451,21 +451,17 @@ include_once 'C:\xampp\htdocs\store\model\ProductModel.php';
       } 
       fetch_data();
         $(document).on('click', '#btn_add_coment', function () {
-            var coment = $('#coment').text();  //text get from td in slect.php
+            var coment = $('#coment').val();  //text get from td in slect.php
            
             if (coment == '')
             {
                 alert("You should type somthing!");
                 return false;
-            }if (username == '')
-            {
-                alert("Please login before comment");
-                return false;
             }
             $.ajax({
                 url: "insertcoment.php",
                 method: "POST",
-                data:{comment:coment, username:username},  
+                data:{comment:coment},  
                 dataType: "text",
                 success: function (data)
                 {

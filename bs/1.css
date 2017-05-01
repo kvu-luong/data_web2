@@ -1,5 +1,11 @@
 *{margin:0;padding:0; }
 
+textarea.coment {
+    width: 313px;
+    height: 95px;
+    resize: none;
+}
+
 button.btn.btn-link.bt {
     padding-top: 15px;
     text-decoration: none;
